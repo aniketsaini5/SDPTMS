@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Status</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/public/asset/logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>HelpFarm</h1>
+        <nav>
+            <ul>
+                <li><a href="/public/index.html">Home</a></li>
+                <li><a href="/public/add-purchy.html">Add Purchy</a></li>
+                <li><a href="/public/search.html">Search</a></li>
+                <li><a href="/public/update-status.html">Update Status</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Update Transport Status</h2>
+        <form id="updateStatusForm">
+            <label for="code_no">Code No:</label>
+            <input type="text" id="code_no" name="code_no" required>
+
+            <label for="new_status">New Transport Status:</label>
+            <select id="new_status" name="new_status" required>
+                <option value="">Select Status</option>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+
+            <button type="submit">Update Status</button>
+        </form>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Purchy</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/public/asset/logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>HelpFarm</h1>
+        <nav>
+            <ul>
+                <li><a href="/public/index.html">Home</a></li>
+                <li><a href="/public/add-purchy.html">Add Purchy</a></li>
+                <li><a href="/public/search.html">Search</a></li>
+                <li><a href="/public/update-status.html">Update Status</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Add Purchy</h2>
+        <form id="addPurchyForm">
+            <label for="farmer_name">Farmer Name:</label>
+            <input type="text" id="farmer_name" name="farmer_name" required>
+
+            <label for="code_no">Code No:</label>
+            <input type="text" id="code_no" name="code_no" required>
+
+            <label for="purchy_no">Purchy No:</label>
+            <input type="text" id="purchy_no" name="purchy_no" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="weight">Weight (in Quintal):</label>
+            <input type="number" id="weight" name="weight" step="0.01" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="transport_status">Transport Status:</label>
+            <select id="transport_status" name="transport_status" required>
+                <option value="">Select Status</option>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+
+            <label for="transporter_name">Transporter Name:</label>
+            <input type="text" id="transporter_name" name="transporter_name" required>
+
+            <button type="submit">Add Purchy</button>
+        </form>
+    </main>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+{
+  "name": "helpfarm",
+  "version": "1.0.0",
+  "description": "HelpFarm - Farm Purchase Management System",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.11.0"
+  }
+}
