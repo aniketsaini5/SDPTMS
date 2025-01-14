@@ -1,0 +1,43 @@
+ /* Scrollbar Styles */
+ ::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4caf50;
+    border-radius: 6px;
+    border: 2px solid #ffffff;
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4caf50 #f0f0f0;
+}
+
+/* Text Selection Styles */
+::selection {
+    background: green;
+    color: white;
+}
+
+::-moz-selection {
+    background: green;
+    color: white;
+}
+
+/* Remove number input spinner */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;  /* Firefox */
+    appearance: none;            /* Standard property for better compatibility */
+  }

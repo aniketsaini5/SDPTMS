@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Purchy | SDPMS</title>
+    <link rel="stylesheet" href="/css/update-purchy.css">
+    <link rel="stylesheet" href="/css/scroll.css">
+    <link rel="icon" type="image/x-icon" href="/asset/logo.ico">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="background-img"></div>
+    <main>
+        <h2>Update Purchy</h2>
+        <form id="searchPurchyForm">
+            <div class="form-group">
+                <label for="code_no">Code No:</label>
+                <input type="text" id="code_no" name="code_no" required>
+            </div>
+            <div class="form-group">
+                <label for="purchy_no">Purchy No:</label>
+                <input type="text" id="purchy_no" name="purchy_no" required>
+            </div>
+            <button type="submit">Search Purchy</button>
+        </form>
+        <form id="updatePurchyForm" style="display: none;">
+            <div class="form-group">
+                <label for="Session">Session</label>
+                <select id="Session" name="Session" required>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="farmer_name">Farmer Name:</label>
+                <input type="text" id="farmer_name" name="farmer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (in Quintal):</label>
+                <input type="number" id="weight" name="weight" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="transport_status">Transport Status:</label>
+                <select id="transport_status" name="transport_status" required>
+                    <option value="">Select Status</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Unpaid">Unpaid</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="transporter_name">Transporter Name:</label>
+                <input type="text" id="transporter_name" name="transporter_name" required>
+            </div>
+            <button type="submit">Update Purchy</button>
+        </form>
+    </main>
+
+    <script src="/js/update-purchy.js"></script>
+    <script src="/js/session.js"></script>
+</body>
+
+</html>

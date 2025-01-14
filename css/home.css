@@ -1,0 +1,310 @@
+@font-face {
+    font-family: 'Norwester';
+    src: url('/fonts/norwester.woff2') format('woff2'),
+        url('/fonts/norwester.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    font-family: 'Norwester',Arial, sans-serif;
+    letter-spacing: 2px;
+
+
+}
+
+/* Header Styles */
+.header-fixed {
+    background-color: green;
+    box-shadow: 0 1px 1px #ccc;
+    padding: 20px 40px;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-fixed .header-limiter {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-fixed .header-limiter .left-section {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-fixed .header-limiter img.logo {
+    height: 50px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+.header-fixed h1 {
+    font: normal 20px 'Norwester',Arial, sans-serif;
+    line-height: 40px;
+    margin: 0;
+    color: #ffffff;
+}
+
+
+/* Navigation Links */
+.header-fixed nav {
+    font: 18px 'Norwester',Arial, sans-serif;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.header-fixed nav a {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 15px;
+    opacity: 0.9;
+}
+
+.header-fixed nav a:hover {
+    opacity: 1;
+}
+
+.header-fixed nav a.selected {
+    color: #608bd2;
+    pointer-events: none;
+    opacity: 1;
+}
+
+/* Main Section Styles */
+.main-section {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    min-height: 59vh;
+}
+
+.main-section .content {
+    max-width: 600px;
+}
+
+.main-section h1 {
+    font-size: 36px;
+    color: rgb(5, 75, 5);
+    margin-bottom: 15px;
+}
+
+.main-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(17, 81, 17);
+}
+
+.main-section .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.main-section .button:hover {
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+}
+
+.main-section .image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: green;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: larger;
+    font-weight: 800;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header-fixed {
+        padding: 15px 20px;
+    }
+
+    .header-fixed .header-limiter {
+        position: relative;
+    }
+
+    .header-fixed nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: green;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px green;
+    }
+
+    .header-fixed nav.active {
+        display: block;
+    }
+
+    .header-fixed nav a {
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    /* Hamburger Menu Button */
+    #menu-toggle {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px;
+        margin-left: 15px;
+        display: block;
+    }
+
+    .main-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .main-section .content {
+        max-width: 100%;
+    }
+
+    .main-section h1 {
+        font-size: 28px;
+    }
+
+    .main-section p {
+        font-size: 16px;
+    }
+
+    .main-section .button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+
+    .main-section .image img {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 20px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #menu-toggle {
+        display: none;
+    }
+
+    .header-fixed nav {
+        display: block !important;
+    }
+
+    .main-section {
+        padding: 40px 20px;
+    }
+
+    .main-section h1 {
+        font-size: 32px;
+    }
+
+    .main-section .content p {
+        font-size: 16px;
+    }
+
+    .main-section .image img {
+        max-width: 400px;
+    }
+
+    .header-fixed h1 {
+        font-size: 26px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+    #menu-toggle {
+        display: none;
+    }
+
+    .header-fixed nav {
+        display: block !important;
+    }
+
+    .main-section {
+        padding: 80px 40px;
+        flex-direction: row;
+    }
+
+    .main-section h1 {
+        font-size: 40px;
+    }
+
+    .main-section p {
+        font-size: 18px;
+    }
+
+    .main-section .image img {
+        max-width: 500px;
+    }
+
+    .header-fixed h1 {
+        font-size: 28px;
+    }
+}
+
+/* Sticky Header Animation */
+.header-fixed {
+    transition: padding 0.3s;
+}
+
+body.fixed .header-fixed {
+    padding: 10px 40px;
+}
+
+/* Helper Classes */
+.header-fixed-placeholder {
+    height: 80px;
+}

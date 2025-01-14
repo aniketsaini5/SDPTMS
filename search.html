@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Purchies | SDPMS</title>
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/scroll.css">
+    <link rel="icon" type="image/x-icon" href="/asset/logo.ico">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="background-img"></div>
+    <main>
+        <!-- <h1>Search Purchies</h1> -->
+        <div class="search-container">
+            <h1>Search Purchies</h1>
+            <div class="basic-search">
+                <div class="form-group">
+                    <label for="Session">Session:</label>
+                    <select id="Session" name="Session" required>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="code_no">Farmer Code No:</label>
+                    <input type="text" id="code_no" name="code_no" required>
+                </div>
+
+                <button id="toggle-filters" class="secondary-btn">
+                    <span id="filter-icon">▼</span> Advanced Filters
+                </button>
+            </div>
+
+            <div id="advanced-filters" class="hidden">
+                <div class="filter-section">
+                    <h3>Transport Status</h3>
+                    <select id="transport_status" name="transport_status">
+                        <option value="all">All</option>
+                        <option value="paid">Paid</option>
+                        <option value="unpaid">Unpaid</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Price Filter</h3>
+                    <div class="range-filter">
+                        <input type="number" id="price_value" placeholder="Enter Price">
+                        <div class="checkbox-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="price_range" value="greater" class="price-checkbox">
+                                Greater than or equal to (>=)
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="price_range" value="less" class="price-checkbox">
+                                Less than or equal to (=<) </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Weight Filter (Quintal)</h3>
+                    <div class="range-filter">
+                        <input type="number" id="weight_value" placeholder="Enter Weight">
+                        <div class="checkbox-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="weight_range" value="greater" class="weight-checkbox">
+                                Greater than or equal to (>=)
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="weight_range" value="less" class="weight-checkbox">
+                                Less than or equal to (=<) </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="search-btn" type="submit">Search</button>
+        </div>
+
+        <div class="results-container hidden">
+            <h2>Search Results</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Purchy No</th>
+                            <th>Date</th>
+                            <th>Farmer Name</th>
+                            <th>Code No</th>
+                            <th>Weight</th>
+                            <th>Price</th>
+                            <th>Transport Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+                        <!-- Results will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/search.js"></script>
+    <script src="/js/session.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+@font-face {
+    font-family: 'Norwester';
+    src: url('/fonts/norwester.woff2') format('woff2'),
+         url('/fonts/norwester.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Norwester', Arial, sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 2px;
+    overflow-x: hidden;
+}
+
+#background-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    background: url('/asset/bg.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: brightness(0.8);
+}
+
+main {
+    background: rgb(255, 255, 255);
+    padding: 30px 40px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px green;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid green;
+}
+
+h1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+    color: green;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: green;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 96.6%;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 16px;
+    color: green;
+    font-family: 'Norwester', Arial, sans-serif;
+    letter-spacing: 2px;
+    background-color: white;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 16px;
+    color: green;
+    font-family: 'Norwester', Arial, sans-serif;
+    letter-spacing: 2px;
+    background-color: white;
+}
+
+input:focus,
+select:focus {
+    border: 2px solid green; 
+    outline: none; 
+    box-shadow: 0 0 5px green; 
+}
+
+button[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Norwester', Arial, sans-serif;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffffff;
+    color: green;
+    border: 1px solid green;
+}
+
+/* Footer Styles */
+footer {
+    background-color: green;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    font-size: larger;
+    font-weight: 800;
+}
+
+@media (max-width: 1024px) {
+    main {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+        font-size: 14px;
+        width: 96.7%;
+    }
+
+    select {
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        width: 70%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        margin: 10px auto;
+        padding: 15px;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+        }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+        font-size: 12px;
+        width: 93.8%;
+    }
+
+    select {
+        font-size: 12px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 8px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 700px) {
+    main {
+        margin: 5px auto;
+    }
+    
+    .form-group {
+        margin-bottom: 8px;
+    }
+    
+    h1 {
+        margin-bottom: 10px;
+    }
+}
+
