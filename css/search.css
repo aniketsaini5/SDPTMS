@@ -254,7 +254,7 @@ footer p {
     text-align: right;
     margin: 20px 0;
     padding: 10px;
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -277,7 +277,7 @@ footer p {
 }
 
 .total-price {
-    color: green;
+    color: rgb(0, 0, 0);
 }
 
 .price-value {
