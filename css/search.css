@@ -236,3 +236,29 @@ footer p {
     }
 }
 
+.transport-status-select {
+    padding: 5px;
+    border: 1px solid green;
+    border-radius: 4px;
+    background-color: white;
+    color: green;
+    cursor: pointer;
+    width: 100%;
+}
+
+.transport-status-select:hover {
+    border-color: darkgreen;
+}
+
+.total-price {
+    text-align: right;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+.total-price h3 {
+    color: green;
+    margin: 0;
+}

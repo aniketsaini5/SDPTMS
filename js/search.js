@@ -45,21 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function getSearchData() {
-        const session = document.getElementById('Session').value;  // Update this to the correct ID for session
+        const session = document.getElementById('Session').value;
         const codeNo = document.getElementById('code_no').value;
         const transportStatus = document.getElementById('transport_status').value;
         const priceValue = document.getElementById('price_value').value;
         const weightValue = document.getElementById('weight_value').value;
 
-        let priceComparison = '';
-        let weightComparison = '';
+        let priceComparison = null;
+        let weightComparison = null;
 
+        // Get selected price comparison
         priceCheckboxes.forEach(cb => {
             if (cb.checked) {
                 priceComparison = cb.value === 'greater' ? '>=' : '<=';
             }
         });
 
+        // Get selected weight comparison
         weightCheckboxes.forEach(cb => {
             if (cb.checked) {
                 weightComparison = cb.value === 'greater' ? '>=' : '<=';
@@ -68,111 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         return {
             session,
-            codeNo,
-            transportStatus,
-            price: {
-                value: priceValue,
-                comparison: priceComparison
-            },
-            weight: {
-                value: weightValue,
-                comparison: weightComparison
-            }
-        };
-    }
-
-    function validateSearch(data) {
-        if (!data.session || !data.codeNo) {
-            alert('Please enter session and code number');
-            return false;
-        }
-        return true;
-    }
-
-    function performSearch(searchData) {
-        console.log('Search Data:', searchData); // Log the search data
-        // Use Axios to send the search request to the backend
-        axios.post('https://server-1-1qn3.onrender.com/search', searchData)
-            .then(function(response) {
-                // Show results container
-                resultsContainer.classList.remove('hidden');
-                // Display results
-                displayResults(response.data);
-            })
-            .catch(function(error) {
-                console.error('There was an error!', error);
-                alert('Failed to fetch data');
-            });
-    }
-
-    function displayResults(results) {
-        const tbody = document.getElementById('results-body');
-        tbody.innerHTML = '';
-    
-        if (results.length === 0) {
-            // Show "No results found" message
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="7" class="text-center">No results found</td>
-                </tr>
-            `;
-            return;
-        }
-    
-        results.forEach(result => {
-            const row = document.createElement('tr');
-            // Format date to be more readable
-            const formattedDate = new Date(result.date).toLocaleDateString();
-            
-            row.innerHTML = `
-                <td>${result.purchy_no}</td>
-                <td>${formattedDate}</td>
-                <td>${result.farmer_name}</td>
-                <td>${result.code_no}</td>
-                <td>${result.weight}</td>
-                <td>${result.price}</td>
-                <td>${result.transport_status}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    }
-    
-    function validateSearch(data) {
-        // Only require session for search
-        if (!data.session) {
-            alert('Please select a session');
-            return false;
-        }
-        return true;
-    }
-    
-    function getSearchData() {
-        const session = document.getElementById('Session').value;
-        const codeNo = document.getElementById('code_no').value;
-        const transportStatus = document.getElementById('transport_status').value;
-        const priceValue = document.getElementById('price_value').value;
-        const weightValue = document.getElementById('weight_value').value;
-    
-        let priceComparison = null;
-        let weightComparison = null;
-    
-        // Get selected price comparison
-        document.getElementsByName('price_range').forEach(cb => {
-            if (cb.checked) {
-                priceComparison = cb.value;
-            }
-        });
-    
-        // Get selected weight comparison
-        document.getElementsByName('weight_range').forEach(cb => {
-            if (cb.checked) {
-                weightComparison = cb.value;
-            }
-        });
-    
-        return {
-            session,
-            codeNo: codeNo.trim(), // Remove any whitespace
+            codeNo: codeNo.trim(),
             transportStatus,
             price: priceValue ? {
                 value: parseFloat(priceValue),
@@ -184,5 +82,106 @@ document.addEventListener('DOMContentLoaded', function() {
             } : null
         };
     }
-        
+
+    function validateSearch(data) {
+        if (!data.session) {
+            alert('Please select a session');
+            return false;
+        }
+        return true;
+    }
+
+    function performSearch(searchData) {
+        console.log('Search Data:', searchData);
+        axios.post('https://server-1-1qn3.onrender.com/search', searchData)
+            .then(function(response) {
+                resultsContainer.classList.remove('hidden');
+                displayResults(response.data);
+            })
+            .catch(function(error) {
+                console.error('There was an error!', error);
+                alert('Failed to fetch data');
+            });
+    }
+
+    function displayResults(results) {
+        const tbody = document.getElementById('results-body');
+        const totalPriceElement = document.getElementById('total-price-value');
+        tbody.innerHTML = '';
+
+        if (results.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center">No results found</td>
+                </tr>
+            `;
+            totalPriceElement.textContent = '0';
+            return;
+        }
+
+        // Calculate total price
+        const totalPrice = results.reduce((sum, result) => sum + parseFloat(result.price), 0);
+        totalPriceElement.textContent = totalPrice.toLocaleString();
+
+        results.forEach(result => {
+            const row = document.createElement('tr');
+            const formattedDate = new Date(result.date).toLocaleDateString();
+            
+            row.innerHTML = `
+                <td>${result.purchy_no}</td>
+                <td>${formattedDate}</td>
+                <td>${result.farmer_name}</td>
+                <td>${result.code_no}</td>
+                <td>${result.weight}</td>
+                <td>${result.price}</td>
+                <td class="transport-status-cell" data-purchy-no="${result.purchy_no}">
+                    <select class="transport-status-select">
+                        <option value="paid" ${result.transport_status === 'paid' ? 'selected' : ''}>Paid</option>
+                        <option value="unpaid" ${result.transport_status === 'unpaid' ? 'selected' : ''}>Unpaid</option>
+                    </select>
+                </td>
+            `;
+            tbody.appendChild(row);
+
+            // Add event listener to the select element
+            const select = row.querySelector('.transport-status-select');
+            select.addEventListener('change', function() {
+                updateTransportStatus(result.purchy_no, this.value);
+            });
+        });
+    }
+
+    function updateTransportStatus(purchyNo, newStatus) {
+        // Show loading state
+        const select = document.querySelector(`[data-purchy-no="${purchyNo}"] select`);
+        select.disabled = true;
+
+        axios.post('https://server-1-1qn3.onrender.com/update-transport-status', {
+            purchy_no: purchyNo,
+            transport_status: newStatus
+        })
+        .then(function(response) {
+            if (response.data.success) {
+                // Show success indication
+                select.style.borderColor = 'green';
+                setTimeout(() => {
+                    select.style.borderColor = '';
+                }, 2000);
+            } else {
+                // Revert selection on failure
+                select.value = newStatus === 'paid' ? 'unpaid' : 'paid';
+                alert(response.data.message || 'Failed to update status');
+            }
+        })
+        .catch(function(error) {
+            // Revert selection on error
+            select.value = newStatus === 'paid' ? 'unpaid' : 'paid';
+            console.error('Error updating status:', error);
+            alert('Failed to update transport status: ' + (error.response?.data?.message || error.message));
+        })
+        .finally(function() {
+            // Re-enable select
+            select.disabled = false;
+        });
+    }
 });
