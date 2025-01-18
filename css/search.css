@@ -262,3 +262,25 @@ footer p {
     color: green;
     margin: 0;
 }
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.results-header h2 {
+    margin: 0;
+    color: black;
+}
+
+.total-price {
+    color: green;
+}
+
+.price-value {
+    font-weight: bold;
+    color: green;
+}
