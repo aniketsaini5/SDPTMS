@@ -66,3 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const weightInput = document.getElementById("weight");
+    const priceInput = document.getElementById("price");
+
+    const pricePerQuintal = 370; // Price per quintal
+
+    function updatePrice() {
+        const weight = parseFloat(weightInput.value) || 0;
+        priceInput.value = (weight * pricePerQuintal).toFixed(2);
+    }
+
+    // Update price when weight changes
+    weightInput.addEventListener("input", updatePrice);
+
+    // Initial calculation when page loads
+    updatePrice();
+});
